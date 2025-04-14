@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Support Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="container1">
+    <h2>Ask Your Query</h2>
+    <form method="POST">
+        <label for="name">Your Name</label><br>
+        <input type="text" name="name" id="name" placeholder="Enter your name" required><br><br>
+
+        <label for="profession">Profession</label><br>
+        <select name="profession" id="profession" required>
+            <option value="Student">Student</option>
+            <option value="Teacher">Teacher</option>
+        </select><br><br>
+
+        <label for="query">Your Question</label><br>
+        <textarea name="query" id="query" rows="4" cols="50" placeholder="Type your question here..." required></textarea><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+{% if response %}
+<h3>Response:</h3>
+<div class="chat-container">
+    {% for line in response %}
+        <div class="chat-bubble">
+            {{ line }}
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+</body>
+</html>

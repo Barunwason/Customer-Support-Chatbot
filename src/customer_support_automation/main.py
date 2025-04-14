@@ -16,6 +16,10 @@ def run(inputs):
     
     try:
         CustomerSupportAutomation().crew().kickoff(inputs=inputs)
+        with open('final_draft.md', 'r') as file:
+            content = file.read()
+            response_lines = content.splitlines()
+
     except Exception as e:
         raise Exception(f"An error occurred while running the crew: {e}")
 
@@ -49,3 +53,4 @@ def test(inputs):
 
     except Exception as e:
         raise Exception(f"An error occurred while testing the crew: {e}")
+

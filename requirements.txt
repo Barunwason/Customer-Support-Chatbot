@@ -1,0 +1,4 @@
+crewai
+flask
+crewai_tools
+markdown
