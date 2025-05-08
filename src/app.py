@@ -8,22 +8,26 @@ app = Flask(__name__)
 def home():
     response = ""
     if request.method == 'POST':
-        name=request.form['name']
-        profession=request.form['profession']
+        name = request.form['name']
+        profession = request.form['profession']
         query = request.form['query']
         
         inputs = {
-        "customer": profession,
-        "person": name,
-        "inquiry": query
+            "customer": profession,
+            "person": name,
+            "inquiry": query
         }
-        run(inputs)
-
-        with open("final_draft.md", "r") as file:
-            response = file.read()
-            response_lines = response.strip().split('\n')
-
-    return render_template('index.html', response=response_lines)
+        
+        response = markdown.markdown(run(inputs))
+        
+        if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            # Return JUST the response text for AJAX
+            return response
+        # Return full template for normal requests
+        return render_template('index.html', response=response)
+    
+    # GET request - return empty form
+    return render_template('index.html', response=response)
 
 if __name__ == '__main__':
     app.run(debug=True)

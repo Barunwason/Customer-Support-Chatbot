@@ -3,35 +3,53 @@
 <head>
     <title>Customer Support Chatbot</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
 </head>
 <body>
-    <div id="container1">
-    <h2>Ask Your Query</h2>
-    <form method="POST">
-        <label for="name">Your Name</label><br>
-        <input type="text" name="name" id="name" placeholder="Enter your name" required><br><br>
-
-        <label for="profession">Profession</label><br>
-        <select name="profession" id="profession" required>
-            <option value="Student">Student</option>
-            <option value="Teacher">Teacher</option>
-        </select><br><br>
-
-        <label for="query">Your Question</label><br>
-        <textarea name="query" id="query" rows="4" cols="50" placeholder="Type your question here..." required></textarea><br><br>
-
-        <input type="submit" value="Submit">
-    </form>
-</div>
-{% if response %}
-<h3>Response:</h3>
-<div class="chat-container">
-    {% for line in response %}
-        <div class="chat-bubble">
-            {{ line }}
+    <nav class="coursera-navbar">
+        <div class="navbar-brand">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Coursera_logo_%282020%29.svg" alt="Coursera Logo">
+            <span class="brand-text">Customer Support</span>
         </div>
-    {% endfor %}
-</div>
-{% endif %}
+
+        
+        
+        <div class="navbar-links">
+            <a href="https://www.coursera.org/" class="nav-link">Home</a>
+            <a href="#" class="nav-link">Help Center</a>
+            <a href="#" class="nav-link">Contact Us</a>
+            <a href="#" class="nav-link">Courses</a>
+        </div>
+    </nav>
+
+    <div id="container1">
+        <h2>Ask Your Query</h2>
+        <form method="POST">
+            <label for="name">Your Name</label><br>
+            <input type="text" name="name" id="name" placeholder="Enter your name" required><br><br>
+
+            <label for="profession">Profession</label><br>
+            <select name="profession" id="profession" required>
+                <option value="Student">Student</option>
+                <option value="Teacher">Teacher</option>
+            </select><br><br>
+
+            <label for="query">Your Question</label><br>
+            <textarea name="query" id="query" rows="4" cols="50" placeholder="Type your question here..." required></textarea><br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    
+    <div id="loader-container" >
+        <div class="loader"></div>
+        <p>Processing your request...</p>
+    </div>
+    
+    <div id="response-container">{{ response|safe }}</div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

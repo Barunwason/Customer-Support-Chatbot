@@ -3,7 +3,62 @@ body {
     background-color: #f2f2f2;
     padding: 20px;
 }
+.coursera-navbar {
+    background-color: white;
+    color: #0056d2;
+    padding: 0.8rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.navbar-brand img {
+    height: 30px;
+}
+
+.brand-text {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-link {
+    color: #0056d2;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.nav-link:hover {
+    opacity: 0.8;
+}
+
+.support-badge {
+    background-color: #ffc107;
+    color: #0056d2;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+h2{
+    color: #0056b3;
+    padding-left: 1%;
+}
 form {
     background-color: white;
     padding: 40px;
@@ -44,7 +99,83 @@ input[type="submit"]:hover {
     max-width: 600px;
 }
 
+.loader {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    position: center;
+    animation: rotate 1s linear infinite
+  }
+  .loader::before , .loader::after {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    inset: 0px;
+    border-radius: 50%;
+    border: 5px solid #FFF;
+    animation: prixClipFix 2s linear infinite ;
+  }
+  .loader::after{
+    border-color: #FF3D00;
+    animation: prixClipFix 2s linear infinite , rotate 0.5s linear infinite reverse;
+    inset: 6px;
+  }
 
+  @keyframes rotate {
+    0%   {transform: rotate(0deg)}
+    100%   {transform: rotate(360deg)}
+  }
+
+  @keyframes prixClipFix {
+      0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+      25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+      50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+      75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+      100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+  }
+#response-container {
+    max-width: 1500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    animation: fadeIn 0.5s ease-out;
+}
+/* Add to your style.css */
+#response-container {
+    max-width: 1500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-height: 500px;
+    overflow-y: auto;
+    line-height: 1.6;
+}
+
+#response-container p {
+    margin-bottom: 1em;
+}
+
+#response-container ul, #response-container ol {
+    margin-bottom: 1em;
+    padding-left: 2em;
+}
+
+.typing-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background-color: #333;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
